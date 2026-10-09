@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "Gestion Options Etudiants - TP REST",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "OPTIONS",
+      "item": [
+        {
+          "name": "1. Ajouter une Option (POST)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"codeOption\": 7,\n    \"libelle\": \"Intelligence Artificielle\",\n    \"domaine\": \"Informatique Avancée\",\n    \"responsable\": \"M. Dupont\",\n    \"credits\": 30,\n    \"semestre\": 1,\n    \"capacite\": 40\n}"
+            },
+            "url": { "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/options", "protocol": "http", "host": ["localhost"], "port": "8181", "path": ["Gestion_Options_Etudiants", "rest", "options"] }
+          }
+        },
+        {
+          "name": "2. Afficher toutes les Options (GET)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/options", "protocol": "http", "host": ["localhost"], "port": "8181", "path": ["Gestion_Options_Etudiants", "rest", "options"] }
+          }
+        },
+        {
+          "name": "3. Options par Domaine (GET)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/options?domaine=Mathématiques",
+              "protocol": "http", "host": ["localhost"], "port": "8181",
+              "path": ["Gestion_Options_Etudiants", "rest", "options"],
+              "query": [{ "key": "domaine", "value": "Mathématiques" }]
+            }
+          }
+        },
+        {
+          "name": "4. Option par Code (GET)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/options/1", "protocol": "http", "host": ["localhost"], "port": "8181", "path": ["Gestion_Options_Etudiants", "rest", "options", "1"] }
+          }
+        },
+        {
+          "name": "4b. Option par Code alias UE (GET)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/options/UE/1", "protocol": "http", "host": ["localhost"], "port": "8181", "path": ["Gestion_Options_Etudiants", "rest", "options", "UE", "1"] }
+          }
+        },
+        {
+          "name": "5. Modifier une Option (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"codeOption\": 7,\n    \"libelle\": \"IA et Machine Learning\",\n    \"domaine\": \"Informatique Avancée\",\n    \"responsable\": \"M. Dupont Modifié\",\n    \"credits\": 35,\n    \"semestre\": 2,\n    \"capacite\": 50\n}"
+            },
+            "url": { "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/options/7", "protocol": "http", "host": ["localhost"], "port": "8181", "path": ["Gestion_Options_Etudiants", "rest", "options", "7"] }
+          }
+        },
+        {
+          "name": "6. Supprimer une Option (DELETE)",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/options/7", "protocol": "http", "host": ["localhost"], "port": "8181", "path": ["Gestion_Options_Etudiants", "rest", "options", "7"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ETUDIANTS",
+      "item": [
+        {
+          "name": "1. Ajouter un Etudiant (POST)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"identifiant\": \"I0010\",\n    \"nom\": \"Etudiant 1\",\n    \"prenom\": \"Etudiant 1\",\n    \"option\": {\n        \"codeOption\": 1,\n        \"libelle\": \"Informatique\",\n        \"domaine\": \"Informatique\",\n        \"responsable\": \"M. Responsable Informatique\",\n        \"credits\": 30,\n        \"semestre\": 1,\n        \"capacite\": 30\n    },\n    \"anneeEtude\": 2023,\n    \"email\": \"etudiant1@example.com\"\n}"
+            },
+            "url": { "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/etudiants", "protocol": "http", "host": ["localhost"], "port": "8181", "path": ["Gestion_Options_Etudiants", "rest", "etudiants"] }
+          }
+        },
+        {
+          "name": "2. Afficher tous les Etudiants (GET)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/etudiants", "protocol": "http", "host": ["localhost"], "port": "8181", "path": ["Gestion_Options_Etudiants", "rest", "etudiants"] }
+          }
+        },
+        {
+          "name": "3. Etudiants par Option - XML (GET)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/etudiants/option?codeOption=1",
+              "protocol": "http", "host": ["localhost"], "port": "8181",
+              "path": ["Gestion_Options_Etudiants", "rest", "etudiants", "option"],
+              "query": [{ "key": "codeOption", "value": "1" }]
+            }
+          }
+        },
+        {
+          "name": "4. Etudiant par Identifiant (GET)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/etudiants/I001", "protocol": "http", "host": ["localhost"], "port": "8181", "path": ["Gestion_Options_Etudiants", "rest", "etudiants", "I001"] }
+          }
+        },
+        {
+          "name": "5. Modifier un Etudiant (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"identifiant\": \"I0010\",\n    \"nom\": \"Nouveau Nom\",\n    \"prenom\": \"Nouveau Prenom\",\n    \"option\": { \"codeOption\": 1 },\n    \"anneeEtude\": 2024,\n    \"email\": \"nouveau@example.com\"\n}"
+            },
+            "url": { "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/etudiants/I0010", "protocol": "http", "host": ["localhost"], "port": "8181", "path": ["Gestion_Options_Etudiants", "rest", "etudiants", "I0010"] }
+          }
+        },
+        {
+          "name": "6. Supprimer un Etudiant (DELETE)",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "http://localhost:8181/Gestion_Options_Etudiants/rest/etudiants/I0010", "protocol": "http", "host": ["localhost"], "port": "8181", "path": ["Gestion_Options_Etudiants", "rest", "etudiants", "I0010"] }
+          }
+        }
+      ]
+    }
+  ]
+}
